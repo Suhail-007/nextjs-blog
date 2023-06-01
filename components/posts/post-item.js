@@ -13,10 +13,9 @@ export default function PostItem({ title, image, excerpt, date, slug }) {
     const imagePath = `/images/posts/${slug}/${image}`;
     const linkPath = `/posts/${slug}`;
 
-    console.log(imagePath);
     return (
         <li className={styles.post}>
-            <Link href={slug}>
+            <Link href={linkPath}>
                 <div className={styles.image}>
                     <Image src={imagePath} alt={title} fill='true' />
                 </div>
