@@ -1,42 +1,25 @@
 import Hero from '../components/home-page/hero';
 import FeaturedPosts from '../components/home-page/featured-posts';
 
-const DUMMY_POSTS = [
-    {
-        slug: 'getting-started-with-next-js',
-        title: 'Getting started with next js',
-        image: 'getting-started-nextjs.png',
-        excerpt: 'NextJS is the production framework for react which comes with SSR',
-        date: '2022-02-10'
-    },
-    {
-        slug: 'getting-started-with-next-js2',
-        title: 'Getting started with next js',
-        image: 'getting-started-nextjs.png',
-        excerpt: 'NextJS is the production framework for react which comes with SSR',
-        date: '2022-02-10'
-    },
-    {
-        slug: 'getting-started-with-next-js3',
-        title: 'Getting started with next js',
-        image: 'getting-started-nextjs.png',
-        excerpt: 'NextJS is the production framework for react which comes with SSR',
-        date: '2022-02-10'
-    },
-    {
-        slug: 'getting-started-with-next-js4',
-        title: 'Getting started with next js',
-        image: 'getting-started-nextjs.png',
-        excerpt: 'NextJS is the production framework for react which comes with SSR',
-        date: '2022-02-10'
-    },
-];
-export default function Homepage() {
+import { getFeaturedPosts } from '../lib/post-util';
+
+export default function Homepage({ posts }) {
 
     return (
         <>
             <Hero />
-            <FeaturedPosts posts={DUMMY_POSTS} />
+            <FeaturedPosts posts={posts} />
         </>
     )
+}
+
+export const getStaticProps = function () {
+    const featuredPosts = getFeaturedPosts();
+
+    return {
+        props: {
+            posts: featuredPosts
+        },
+        revalidate: 60
+    }
 }
