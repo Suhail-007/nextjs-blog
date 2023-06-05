@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import styles from './post-item.module.css';
 
-export default function PostItem({ title, image, excerpt, date, slug }) {
+export default function PostItem({ title, image, excerpt, date, slug, content }) {
     const FormattedDate = new Date(date).toLocaleDateString('en-Us', {
         day: 'numeric',
         month: 'long',
