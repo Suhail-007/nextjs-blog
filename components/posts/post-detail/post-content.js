@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
+import { Prism } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 import PostHeader from './post-header';
 
@@ -28,6 +30,13 @@ function PostContent({ slug, image, content, title }) {
                 </div>
             )
         },
+
+        code(code) {
+            const { children, className } = code;
+            return (
+                <Prism style={atomDark} children={children} language='javascript' />
+            )
+        }
     }
 
     return (
