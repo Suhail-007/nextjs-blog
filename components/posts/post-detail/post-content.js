@@ -1,11 +1,14 @@
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
-import { Prism } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { PrismLight } from 'react-syntax-highlighter';
+import atomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 
 import PostHeader from './post-header';
 
 import styles from './post-content.module.css';
+
+PrismLight.registerLanguage('js', js);
 
 function PostContent({ slug, image, content, title }) {
     const imagePath = `/images/posts/${slug}/${image}`;
@@ -34,7 +37,7 @@ function PostContent({ slug, image, content, title }) {
         code(code) {
             const { children, className } = code;
             return (
-                <Prism style={atomDark} children={children} language='javascript' />
+                <PrismLight style={atomDark} children={children} language='javascript' />
             )
         }
     }
